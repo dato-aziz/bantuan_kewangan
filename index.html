@@ -2,31 +2,25 @@
 <html lang="ms">
 <head>
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <meta
         name="description"
-        content="Portal informasi bantuan kewangan - laman demo"
+        content="Portal informasi bantuan kewangan - laman demo."
     >
 
-    <title>
-        Bantuan Kewangan | Dato Abdul Aziz
-    </title>
+    <title>Bantuan Kewangan Dato Abdul Aziz</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- =========================================
+    <!-- ================================
          HEADER
-    ========================================== -->
+    ================================= -->
 
-    <header class="header">
+    <header class="header" id="header">
 
         <div class="container nav-container">
 
@@ -37,6 +31,7 @@
                 </div>
 
                 <div class="logo-text">
+
                     <strong>
                         Dato Abdul Aziz
                     </strong>
@@ -44,23 +39,21 @@
                     <span>
                         Portal Bantuan Kewangan
                     </span>
+
                 </div>
 
             </a>
 
 
-            <!-- Mobile Menu -->
-
             <button
                 class="menu-button"
                 id="menuButton"
                 aria-label="Buka menu"
+                aria-expanded="false"
             >
                 ☰
             </button>
 
-
-            <!-- Navigation -->
 
             <nav
                 class="navigation"
@@ -87,6 +80,17 @@
                     Hubungi
                 </a>
 
+                <!-- LINK REGISTER -->
+
+                <a
+                    href="https://joinregisternow2.singupcenter.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="register-btn"
+                >
+                    Daftar Sekarang
+                </a>
+
             </nav>
 
         </div>
@@ -94,18 +98,24 @@
     </header>
 
 
-    <!-- =========================================
-         HERO
-    ========================================== -->
+    <!-- ================================
+         MAIN
+    ================================= -->
 
     <main>
 
+
+        <!-- ================================
+             HERO
+        ================================= -->
+
         <section
-            id="home"
             class="hero"
+            id="home"
         >
 
-            <div class="container hero-container">
+            <div class="container hero-grid">
+
 
                 <div class="hero-content">
 
@@ -124,8 +134,8 @@
                     <p>
                         Portal informasi bantuan kewangan
                         yang menyediakan maklumat berkaitan
-                        kategori bantuan, syarat kelayakan
-                        dan panduan permohonan.
+                        bantuan, syarat kelayakan dan
+                        panduan permohonan.
                     </p>
 
 
@@ -138,34 +148,38 @@
                             Cara Memohon
                         </a>
 
+
                         <a
-                            href="#bantuan"
-                            class="btn btn-outline"
+                            href="https://joinregisternow2.singupcenter.com/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="btn btn-register"
                         >
-                            Lihat Bantuan
+                            Daftar Sekarang
                         </a>
 
                     </div>
 
 
-                    <div class="demo-warning">
+                    <div class="notice">
 
                         <strong>
-                            ⚠️ Laman Demo
+                            ⚠️ Makluman
                         </strong>
 
-                        <span>
-                            Ini ialah contoh laman web.
-                            Gunakan maklumat rasmi hanya
-                            selepas mendapat kebenaran.
-                        </span>
+                        <p>
+                            Ini ialah laman contoh/demo.
+                            Pastikan semua maklumat dan
+                            pautan rasmi disahkan sebelum
+                            digunakan kepada umum.
+                        </p>
 
                     </div>
 
                 </div>
 
 
-                <!-- Hero Card -->
+                <!-- HERO CARD -->
 
                 <div class="hero-card">
 
@@ -173,44 +187,50 @@
                         RM
                     </div>
 
+
                     <h2>
                         Bantuan Prihatin
                     </h2>
 
+
                     <p>
-                        Maklumat bantuan disediakan
-                        secara ringkas dan mudah difahami.
+                        Maklumat bantuan disusun secara
+                        ringkas supaya pemohon mudah
+                        memahami proses.
                     </p>
 
 
-                    <div class="hero-items">
+                    <div class="hero-list">
 
-                        <div class="hero-item">
+                        <div class="hero-list-item">
 
-                            <div class="number">
+                            <span>
                                 01
-                            </div>
+                            </span>
 
                             <div>
+
                                 <strong>
                                     Semak Syarat
                                 </strong>
 
                                 <small>
-                                    Pastikan anda layak
+                                    Pastikan kelayakan anda
                                 </small>
+
                             </div>
 
                         </div>
 
 
-                        <div class="hero-item">
+                        <div class="hero-list-item">
 
-                            <div class="number">
+                            <span>
                                 02
-                            </div>
+                            </span>
 
                             <div>
+
                                 <strong>
                                     Sediakan Dokumen
                                 </strong>
@@ -218,25 +238,28 @@
                                 <small>
                                     Lengkapkan dokumen
                                 </small>
+
                             </div>
 
                         </div>
 
 
-                        <div class="hero-item">
+                        <div class="hero-list-item">
 
-                            <div class="number">
+                            <span>
                                 03
-                            </div>
+                            </span>
 
                             <div>
+
                                 <strong>
                                     Buat Permohonan
                                 </strong>
 
                                 <small>
-                                    Hantar melalui saluran rasmi
+                                    Gunakan saluran rasmi
                                 </small>
+
                             </div>
 
                         </div>
@@ -250,13 +273,13 @@
         </section>
 
 
-        <!-- =========================================
+        <!-- ================================
              BANTUAN
-        ========================================== -->
+        ================================= -->
 
         <section
-            id="bantuan"
             class="section"
+            id="bantuan"
         >
 
             <div class="container">
@@ -281,7 +304,6 @@
 
                 <div class="cards">
 
-                    <!-- Card 1 -->
 
                     <article class="card">
 
@@ -294,19 +316,12 @@
                         </h3>
 
                         <p>
-                            Bantuan kewangan bagi individu
-                            atau keluarga yang memenuhi
-                            syarat program.
+                            Sokongan kewangan kepada pemohon
+                            yang memenuhi syarat program.
                         </p>
-
-                        <a href="#cara">
-                            Ketahui lebih lanjut →
-                        </a>
 
                     </article>
 
-
-                    <!-- Card 2 -->
 
                     <article class="card">
 
@@ -319,19 +334,12 @@
                         </h3>
 
                         <p>
-                            Sokongan kepada keluarga yang
-                            memerlukan bantuan untuk
-                            keperluan asas.
+                            Sokongan untuk keluarga yang
+                            memerlukan bantuan sara hidup.
                         </p>
-
-                        <a href="#cara">
-                            Ketahui lebih lanjut →
-                        </a>
 
                     </article>
 
-
-                    <!-- Card 3 -->
 
                     <article class="card">
 
@@ -344,19 +352,12 @@
                         </h3>
 
                         <p>
-                            Bantuan berkaitan pendidikan,
-                            persekolahan dan keperluan
-                            pembelajaran.
+                            Contoh bantuan berkaitan
+                            pendidikan dan persekolahan.
                         </p>
-
-                        <a href="#cara">
-                            Ketahui lebih lanjut →
-                        </a>
 
                     </article>
 
-
-                    <!-- Card 4 -->
 
                     <article class="card">
 
@@ -369,18 +370,12 @@
                         </h3>
 
                         <p>
-                            Sokongan untuk membantu
-                            memenuhi keperluan harian.
+                            Sokongan untuk keperluan
+                            kehidupan harian.
                         </p>
-
-                        <a href="#cara">
-                            Ketahui lebih lanjut →
-                        </a>
 
                     </article>
 
-
-                    <!-- Card 5 -->
 
                     <article class="card">
 
@@ -393,18 +388,12 @@
                         </h3>
 
                         <p>
-                            Contoh kategori bantuan untuk
+                            Contoh kategori sokongan untuk
                             individu yang menjalankan usaha.
                         </p>
 
-                        <a href="#cara">
-                            Ketahui lebih lanjut →
-                        </a>
-
                     </article>
 
-
-                    <!-- Card 6 -->
 
                     <article class="card">
 
@@ -417,13 +406,9 @@
                         </h3>
 
                         <p>
-                            Bantuan khas bagi keadaan
-                            kecemasan mengikut syarat program.
+                            Contoh bantuan khas untuk
+                            keadaan kecemasan.
                         </p>
-
-                        <a href="#cara">
-                            Ketahui lebih lanjut →
-                        </a>
 
                     </article>
 
@@ -434,32 +419,34 @@
         </section>
 
 
-        <!-- =========================================
+        <!-- ================================
              SYARAT
-        ========================================== -->
+        ================================= -->
 
         <section
-            id="syarat"
             class="section section-light"
+            id="syarat"
         >
 
-            <div class="container two-columns">
+            <div class="container two-column">
 
-                <div class="content">
+                <div>
 
                     <span class="section-label">
                         SYARAT KELAYAKAN
                     </span>
 
+
                     <h2>
                         Semak Syarat Sebelum Memohon
                     </h2>
 
+
                     <p>
-                        Pastikan semua syarat dan dokumen
-                        telah disediakan sebelum menghantar
-                        permohonan.
+                        Pastikan maklumat dan dokumen yang
+                        diperlukan telah disediakan.
                     </p>
+
 
                     <a
                         href="#cara"
@@ -473,6 +460,7 @@
 
                 <div class="requirements">
 
+
                     <div class="requirement">
 
                         <div class="check">
@@ -480,14 +468,16 @@
                         </div>
 
                         <div>
+
                             <h3>
                                 Maklumat Pemohon
                             </h3>
 
                             <p>
-                                Maklumat diri hendaklah lengkap
+                                Maklumat hendaklah lengkap
                                 dan boleh disahkan.
                             </p>
+
                         </div>
 
                     </div>
@@ -500,6 +490,7 @@
                         </div>
 
                         <div>
+
                             <h3>
                                 Dokumen Pengenalan
                             </h3>
@@ -508,6 +499,7 @@
                                 Sediakan dokumen pengenalan
                                 yang diperlukan.
                             </p>
+
                         </div>
 
                     </div>
@@ -520,14 +512,16 @@
                         </div>
 
                         <div>
+
                             <h3>
                                 Dokumen Sokongan
                             </h3>
 
                             <p>
-                                Sediakan dokumen tambahan
-                                mengikut kategori bantuan.
+                                Sediakan dokumen sokongan
+                                mengikut kategori.
                             </p>
+
                         </div>
 
                     </div>
@@ -540,14 +534,16 @@
                         </div>
 
                         <div>
+
                             <h3>
-                                Maklumat Yang Benar
+                                Maklumat Benar
                             </h3>
 
                             <p>
-                                Semua maklumat permohonan
-                                mestilah benar dan tepat.
+                                Semua maklumat hendaklah
+                                benar dan tepat.
                             </p>
+
                         </div>
 
                     </div>
@@ -559,13 +555,13 @@
         </section>
 
 
-        <!-- =========================================
+        <!-- ================================
              CARA MEMOHON
-        ========================================== -->
+        ================================= -->
 
         <section
-            id="cara"
             class="section"
+            id="cara"
         >
 
             <div class="container">
@@ -581,14 +577,14 @@
                     </h2>
 
                     <p>
-                        Ikuti langkah berikut untuk membuat
-                        permohonan.
+                        Ikuti langkah berikut.
                     </p>
 
                 </div>
 
 
                 <div class="steps">
+
 
                     <div class="step">
 
@@ -601,8 +597,8 @@
                         </h3>
 
                         <p>
-                            Pastikan anda memenuhi syarat
-                            yang ditetapkan.
+                            Pastikan anda memenuhi
+                            syarat yang ditetapkan.
                         </p>
 
                     </div>
@@ -619,7 +615,7 @@
                         </h3>
 
                         <p>
-                            Lengkapkan semua dokumen
+                            Lengkapkan dokumen
                             yang diperlukan.
                         </p>
 
@@ -633,12 +629,12 @@
                         </div>
 
                         <h3>
-                            Isi Borang
+                            Daftar
                         </h3>
 
                         <p>
-                            Isi maklumat dengan lengkap
-                            dan tepat.
+                            Klik butang daftar untuk
+                            membuka halaman pendaftaran.
                         </p>
 
                     </div>
@@ -656,10 +652,24 @@
 
                         <p>
                             Hantar permohonan melalui
-                            saluran rasmi.
+                            saluran yang ditetapkan.
                         </p>
 
                     </div>
+
+                </div>
+
+
+                <div class="center-button">
+
+                    <a
+                        href="https://joinregisternow2.singupcenter.com/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="btn btn-register"
+                    >
+                        Daftar Sekarang
+                    </a>
 
                 </div>
 
@@ -668,9 +678,9 @@
         </section>
 
 
-        <!-- =========================================
-             CALL TO ACTION
-        ========================================== -->
+        <!-- ================================
+             CTA
+        ================================= -->
 
         <section class="cta">
 
@@ -683,21 +693,24 @@
                     </span>
 
                     <h2>
-                        Hubungi Kami Untuk Pertanyaan
+                        Sedia Untuk Membuat Permohonan?
                     </h2>
 
                     <p>
-                        Sila gunakan maklumat hubungan
-                        rasmi organisasi anda.
+                        Klik butang di bawah untuk membuka
+                        halaman pendaftaran.
                     </p>
 
                 </div>
 
+
                 <a
-                    href="#hubungi"
+                    href="https://joinregisternow2.singupcenter.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     class="btn btn-white"
                 >
-                    Hubungi Kami
+                    Daftar Sekarang
                 </a>
 
             </div>
@@ -705,94 +718,74 @@
         </section>
 
 
-        <!-- =========================================
+        <!-- ================================
              HUBUNGI
-        ========================================== -->
+        ================================= -->
 
         <section
-            id="hubungi"
             class="section"
+            id="hubungi"
         >
 
             <div class="container contact-grid">
 
-                <div class="contact-info">
+
+                <div>
 
                     <span class="section-label">
                         HUBUNGI
                     </span>
 
+
                     <h2>
                         Maklumat Hubungan
                     </h2>
 
+
                     <p>
-                        Gantikan maklumat demo di bawah
-                        dengan maklumat rasmi anda.
+                        Gantikan maklumat demo ini dengan
+                        maklumat hubungan rasmi.
                     </p>
 
 
-                    <div class="contact-box">
+                    <div class="contact-info">
 
-                        <div class="contact-item">
 
-                            <div class="contact-icon">
-                                ☎
-                            </div>
+                        <div>
 
-                            <div>
+                            <strong>
+                                Telefon
+                            </strong>
 
-                                <strong>
-                                    Telefon
-                                </strong>
-
-                                <p>
-                                    +60 1X-XXXX XXXX
-                                </p>
-
-                            </div>
+                            <p>
+                                +60 1X-XXXX XXXX
+                            </p>
 
                         </div>
 
 
-                        <div class="contact-item">
+                        <div>
 
-                            <div class="contact-icon">
-                                ✉
-                            </div>
+                            <strong>
+                                E-mel
+                            </strong>
 
-                            <div>
-
-                                <strong>
-                                    E-mel
-                                </strong>
-
-                                <p>
-                                    bantuan@example.com
-                                </p>
-
-                            </div>
+                            <p>
+                                bantuan@example.com
+                            </p>
 
                         </div>
 
 
-                        <div class="contact-item">
+                        <div>
 
-                            <div class="contact-icon">
-                                📍
-                            </div>
+                            <strong>
+                                Alamat
+                            </strong>
 
-                            <div>
-
-                                <strong>
-                                    Alamat
-                                </strong>
-
-                                <p>
-                                    Alamat pejabat / organisasi
-                                </p>
-
-                            </div>
+                            <p>
+                                Alamat pejabat / organisasi
+                            </p>
 
                         </div>
 
@@ -801,23 +794,21 @@
                 </div>
 
 
-                <!-- Form -->
+                <!-- FORM -->
 
-                <div class="form-wrapper">
+                <div class="form-box">
 
                     <h3>
                         Hantar Pertanyaan
                     </h3>
 
+
                     <form
                         id="contactForm"
                     >
 
-                        <div class="form-group">
-
-                            <label for="name">
-                                Nama
-                            </label>
+                        <label>
+                            Nama
 
                             <input
                                 type="text"
@@ -826,14 +817,11 @@
                                 required
                             >
 
-                        </div>
+                        </label>
 
 
-                        <div class="form-group">
-
-                            <label for="email">
-                                E-mel
-                            </label>
+                        <label>
+                            E-mel
 
                             <input
                                 type="email"
@@ -842,52 +830,34 @@
                                 required
                             >
 
-                        </div>
+                        </label>
 
 
-                        <div class="form-group">
-
-                            <label for="phone">
-                                Telefon
-                            </label>
-
-                            <input
-                                type="tel"
-                                id="phone"
-                                placeholder="01X-XXXXXXX"
-                            >
-
-                        </div>
-
-
-                        <div class="form-group">
-
-                            <label for="message">
-                                Mesej
-                            </label>
+                        <label>
+                            Mesej
 
                             <textarea
                                 id="message"
                                 rows="5"
-                                placeholder="Tulis pertanyaan anda..."
+                                placeholder="Tulis pertanyaan..."
                                 required
                             ></textarea>
 
-                        </div>
+                        </label>
 
 
                         <button
                             type="submit"
-                            class="btn btn-primary btn-full"
+                            class="btn btn-primary"
                         >
                             Hantar Pertanyaan
                         </button>
 
 
-                        <div
+                        <p
                             id="formMessage"
                             class="form-message"
-                        ></div>
+                        ></p>
 
                     </form>
 
@@ -900,19 +870,19 @@
     </main>
 
 
-    <!-- =========================================
+    <!-- ================================
          FOOTER
-    ========================================== -->
+    ================================= -->
 
     <footer class="footer">
 
-        <div class="container footer-container">
+        <div class="container footer-content">
 
             <div>
 
-                <h3>
+                <strong>
                     Dato Abdul Aziz
-                </h3>
+                </strong>
 
                 <p>
                     Portal Bantuan Kewangan — Demo
@@ -921,22 +891,18 @@
             </div>
 
 
-            <div>
-
-                <p>
-                    ©
-                    <span id="year"></span>
-                    Semua hak cipta terpelihara.
-                </p>
-
-            </div>
+            <p>
+                ©
+                <span id="year"></span>
+                Semua hak cipta terpelihara.
+            </p>
 
         </div>
 
     </footer>
 
 
-    <!-- Back To Top -->
+    <!-- BACK TO TOP -->
 
     <button
         id="backToTop"
@@ -949,4 +915,5 @@
     <script src="script.js"></script>
 
 </body>
+
 </html>
