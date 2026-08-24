@@ -1,14 +1,8 @@
-/* =========================================
-   BANTUAN KEWANGAN
-   DATO ABDUL AZIZ
-   JAVASCRIPT
-========================================= */
-
 "use strict";
 
 
 /* =========================================
-   DOM READY
+   WEBSITE READY
 ========================================= */
 
 document.addEventListener(
@@ -19,15 +13,15 @@ document.addEventListener(
 
         initSmoothScroll();
 
-        initYear();
+        initHeader();
 
-        initHeaderScroll();
+        initYear();
 
         initBackToTop();
 
         initContactForm();
 
-        initScrollAnimation();
+        initCardsAnimation();
 
         console.log(
             "Website Bantuan Kewangan berjaya dimuatkan."
@@ -38,12 +32,12 @@ document.addEventListener(
 
 
 /* =========================================
-   1. MOBILE MENU
+   MOBILE MENU
 ========================================= */
 
 function initMobileMenu() {
 
-    const menuButton =
+    const button =
         document.getElementById(
             "menuButton"
         );
@@ -54,15 +48,12 @@ function initMobileMenu() {
         );
 
 
-    if (
-        !menuButton ||
-        !navigation
-    ) {
+    if (!button || !navigation) {
         return;
     }
 
 
-    menuButton.addEventListener(
+    button.addEventListener(
         "click",
         function () {
 
@@ -71,15 +62,15 @@ function initMobileMenu() {
             );
 
 
-            const isOpen =
+            const open =
                 navigation.classList.contains(
                     "open"
                 );
 
 
-            menuButton.setAttribute(
+            button.setAttribute(
                 "aria-expanded",
-                isOpen
+                open
                     ? "true"
                     : "false"
             );
@@ -106,7 +97,7 @@ function initMobileMenu() {
                     );
 
 
-                    menuButton.setAttribute(
+                    button.setAttribute(
                         "aria-expanded",
                         "false"
                     );
@@ -121,7 +112,7 @@ function initMobileMenu() {
 
 
 /* =========================================
-   2. SMOOTH SCROLL
+   SMOOTH SCROLL
 ========================================= */
 
 function initSmoothScroll() {
@@ -139,15 +130,15 @@ function initSmoothScroll() {
                 "click",
                 function (event) {
 
-                    const targetId =
+                    const id =
                         this.getAttribute(
                             "href"
                         );
 
 
                     if (
-                        !targetId ||
-                        targetId === "#"
+                        !id ||
+                        id === "#"
                     ) {
                         return;
                     }
@@ -155,7 +146,7 @@ function initSmoothScroll() {
 
                     const target =
                         document.querySelector(
-                            targetId
+                            id
                         );
 
 
@@ -182,37 +173,14 @@ function initSmoothScroll() {
 
 
 /* =========================================
-   3. YEAR
+   HEADER SCROLL
 ========================================= */
 
-function initYear() {
-
-    const year =
-        document.getElementById(
-            "year"
-        );
-
-
-    if (!year) {
-        return;
-    }
-
-
-    year.textContent =
-        new Date().getFullYear();
-
-}
-
-
-/* =========================================
-   4. HEADER SCROLL
-========================================= */
-
-function initHeaderScroll() {
+function initHeader() {
 
     const header =
-        document.querySelector(
-            ".header"
+        document.getElementById(
+            "header"
         );
 
 
@@ -221,7 +189,7 @@ function initHeaderScroll() {
     }
 
 
-    function checkScroll() {
+    function updateHeader() {
 
         if (
             window.scrollY > 40
@@ -244,17 +212,40 @@ function initHeaderScroll() {
 
     window.addEventListener(
         "scroll",
-        checkScroll
+        updateHeader
     );
 
 
-    checkScroll();
+    updateHeader();
 
 }
 
 
 /* =========================================
-   5. BACK TO TOP
+   YEAR
+========================================= */
+
+function initYear() {
+
+    const year =
+        document.getElementById(
+            "year"
+        );
+
+
+    if (!year) {
+        return;
+    }
+
+
+    year.textContent =
+        new Date().getFullYear();
+
+}
+
+
+/* =========================================
+   BACK TO TOP
 ========================================= */
 
 function initBackToTop() {
@@ -299,8 +290,11 @@ function initBackToTop() {
         function () {
 
             window.scrollTo({
+
                 top: 0,
+
                 behavior: "smooth"
+
             });
 
         }
@@ -310,7 +304,7 @@ function initBackToTop() {
 
 
 /* =========================================
-   6. CONTACT FORM
+   CONTACT FORM
 ========================================= */
 
 function initContactForm() {
@@ -345,12 +339,6 @@ function initContactForm() {
                 );
 
 
-            const phone =
-                document.getElementById(
-                    "phone"
-                );
-
-
             const message =
                 document.getElementById(
                     "message"
@@ -363,15 +351,11 @@ function initContactForm() {
                 );
 
 
-            const submitButton =
+            const button =
                 form.querySelector(
                     'button[type="submit"]'
                 );
 
-
-            /* =============================
-               GET VALUE
-            ============================= */
 
             const nameValue =
                 name.value.trim();
@@ -381,17 +365,11 @@ function initContactForm() {
                 email.value.trim();
 
 
-            const phoneValue =
-                phone.value.trim();
-
-
             const messageValue =
                 message.value.trim();
 
 
-            /* =============================
-               VALIDASI NAMA
-            ============================= */
+            /* VALIDASI NAMA */
 
             if (
                 nameValue.length < 3
@@ -409,19 +387,17 @@ function initContactForm() {
             }
 
 
-            /* =============================
-               VALIDASI EMAIL
-            ============================= */
+            /* VALIDASI EMAIL */
 
             if (
-                !validateEmail(
+                !isValidEmail(
                     emailValue
                 )
             ) {
 
                 showMessage(
                     formMessage,
-                    "Sila masukkan alamat e-mel yang sah.",
+                    "Sila masukkan e-mel yang sah.",
                     "error"
                 );
 
@@ -431,30 +407,7 @@ function initContactForm() {
             }
 
 
-            /* =============================
-               VALIDASI TELEFON
-            ============================= */
-
-            if (
-                phoneValue !== "" &&
-                phoneValue.length < 8
-            ) {
-
-                showMessage(
-                    formMessage,
-                    "Sila masukkan nombor telefon yang sah.",
-                    "error"
-                );
-
-                phone.focus();
-
-                return;
-            }
-
-
-            /* =============================
-               VALIDASI MESEJ
-            ============================= */
+            /* VALIDASI MESEJ */
 
             if (
                 messageValue.length < 10
@@ -462,7 +415,7 @@ function initContactForm() {
 
                 showMessage(
                     formMessage,
-                    "Mesej terlalu pendek. Sila tulis sekurang-kurangnya 10 aksara.",
+                    "Sila tulis mesej sekurang-kurangnya 10 aksara.",
                     "error"
                 );
 
@@ -472,24 +425,19 @@ function initContactForm() {
             }
 
 
-            /* =============================
-               BUTTON LOADING
-            ============================= */
+            /* LOADING */
 
-            if (submitButton) {
+            if (button) {
 
-                submitButton.disabled =
-                    true;
+                button.disabled = true;
 
-                submitButton.textContent =
+                button.textContent =
                     "Menghantar...";
 
             }
 
 
-            /* =============================
-               DEMO SUBMISSION
-            ============================= */
+            /* DEMO */
 
             setTimeout(
                 function () {
@@ -498,7 +446,7 @@ function initContactForm() {
                         formMessage,
                         "Terima kasih " +
                         nameValue +
-                        ". Pertanyaan anda telah diterima. Ini masih merupakan borang demo.",
+                        ". Pertanyaan anda telah diterima. Ini masih borang demo.",
                         "success"
                     );
 
@@ -506,14 +454,12 @@ function initContactForm() {
                     form.reset();
 
 
-                    if (
-                        submitButton
-                    ) {
+                    if (button) {
 
-                        submitButton.disabled =
+                        button.disabled =
                             false;
 
-                        submitButton.textContent =
+                        button.textContent =
                             "Hantar Pertanyaan";
 
                     }
@@ -529,10 +475,10 @@ function initContactForm() {
 
 
 /* =========================================
-   7. VALIDATE EMAIL
+   EMAIL VALIDATION
 ========================================= */
 
-function validateEmail(
+function isValidEmail(
     email
 ) {
 
@@ -548,7 +494,7 @@ function validateEmail(
 
 
 /* =========================================
-   8. FORM MESSAGE
+   FORM MESSAGE
 ========================================= */
 
 function showMessage(
@@ -592,10 +538,10 @@ function showMessage(
 
 
 /* =========================================
-   9. SCROLL ANIMATION
+   CARD ANIMATION
 ========================================= */
 
-function initScrollAnimation() {
+function initCardsAnimation() {
 
     const elements =
         document.querySelectorAll(
@@ -610,42 +556,19 @@ function initScrollAnimation() {
     }
 
 
-    /* Browser tidak support observer */
-
     if (
         !("IntersectionObserver" in window)
     ) {
 
-        elements.forEach(
-            function (element) {
-
-                element.classList.add(
-                    "show"
-                );
-
-            }
-        );
-
         return;
     }
-
-
-    elements.forEach(
-        function (element) {
-
-            element.classList.add(
-                "hidden"
-            );
-
-        }
-    );
 
 
     const observer =
         new IntersectionObserver(
             function (
                 entries,
-                observerObject
+                observerInstance
             ) {
 
                 entries.forEach(
@@ -655,17 +578,14 @@ function initScrollAnimation() {
                             entry.isIntersecting
                         ) {
 
-                            entry.target.classList.add(
-                                "show"
-                            );
+                            entry.target.style.opacity =
+                                "1";
+
+                            entry.target.style.transform =
+                                "translateY(0)";
 
 
-                            entry.target.classList.remove(
-                                "hidden"
-                            );
-
-
-                            observerObject.unobserve(
+                            observerInstance.unobserve(
                                 entry.target
                             );
 
@@ -684,6 +604,16 @@ function initScrollAnimation() {
     elements.forEach(
         function (element) {
 
+            element.style.opacity =
+                "0";
+
+            element.style.transform =
+                "translateY(25px)";
+
+            element.style.transition =
+                "opacity .6s ease, transform .6s ease";
+
+
             observer.observe(
                 element
             );
@@ -695,8 +625,7 @@ function initScrollAnimation() {
 
 
 /* =========================================
-   10. KEYBOARD ESCAPE
-   TUTUP MENU MOBILE
+   ESCAPE = CLOSE MOBILE MENU
 ========================================= */
 
 document.addEventListener(
@@ -716,15 +645,13 @@ document.addEventListener(
             );
 
 
-        const menuButton =
+        const button =
             document.getElementById(
                 "menuButton"
             );
 
 
-        if (
-            navigation
-        ) {
+        if (navigation) {
 
             navigation.classList.remove(
                 "open"
@@ -733,11 +660,9 @@ document.addEventListener(
         }
 
 
-        if (
-            menuButton
-        ) {
+        if (button) {
 
-            menuButton.setAttribute(
+            button.setAttribute(
                 "aria-expanded",
                 "false"
             );
