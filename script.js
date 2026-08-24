@@ -1,187 +1,85 @@
 "use strict";
 
+/* =====================================
+   WEBSITE INITIALIZATION
+===================================== */
 
-/* =========================================
-   WEBSITE READY
-========================================= */
+document.addEventListener("DOMContentLoaded", function () {
 
-document.addEventListener(
-    "DOMContentLoaded",
-    function () {
+    initMobileMenu();
+    initHeader();
+    initYear();
+    initBackToTop();
+    initScrollAnimation();
+    initSmoothScroll();
+    initExternalLinks();
 
-        initMobileMenu();
-
-        initSmoothScroll();
-
-        initHeader();
-
-        initYear();
-
-        initBackToTop();
-
-        initContactForm();
-
-        initCardsAnimation();
-
-        console.log(
-            "Website Bantuan Kewangan berjaya dimuatkan."
-        );
-
-    }
-);
+});
 
 
-/* =========================================
+/* =====================================
    MOBILE MENU
-========================================= */
+===================================== */
 
 function initMobileMenu() {
 
-    const button =
-        document.getElementById(
-            "menuButton"
-        );
+    const menuButton =
+        document.getElementById("menuButton");
 
     const navigation =
-        document.getElementById(
-            "navigation"
-        );
+        document.getElementById("navigation");
 
 
-    if (!button || !navigation) {
+    if (!menuButton || !navigation) {
         return;
     }
 
 
-    button.addEventListener(
-        "click",
-        function () {
+    menuButton.addEventListener("click", function () {
 
-            navigation.classList.toggle(
-                "open"
-            );
+        navigation.classList.toggle("open");
+
+        const isOpen =
+            navigation.classList.contains("open");
+
+        menuButton.setAttribute(
+            "aria-expanded",
+            isOpen ? "true" : "false"
+        );
+
+    });
 
 
-            const open =
-                navigation.classList.contains(
-                    "open"
-                );
+    const links =
+        navigation.querySelectorAll("a");
 
 
-            button.setAttribute(
+    links.forEach(function (link) {
+
+        link.addEventListener("click", function () {
+
+            navigation.classList.remove("open");
+
+            menuButton.setAttribute(
                 "aria-expanded",
-                open
-                    ? "true"
-                    : "false"
+                "false"
             );
 
-        }
-    );
+        });
 
-
-    const links =
-        navigation.querySelectorAll(
-            "a"
-        );
-
-
-    links.forEach(
-        function (link) {
-
-            link.addEventListener(
-                "click",
-                function () {
-
-                    navigation.classList.remove(
-                        "open"
-                    );
-
-
-                    button.setAttribute(
-                        "aria-expanded",
-                        "false"
-                    );
-
-                }
-            );
-
-        }
-    );
+    });
 
 }
 
 
-/* =========================================
-   SMOOTH SCROLL
-========================================= */
-
-function initSmoothScroll() {
-
-    const links =
-        document.querySelectorAll(
-            'a[href^="#"]'
-        );
-
-
-    links.forEach(
-        function (link) {
-
-            link.addEventListener(
-                "click",
-                function (event) {
-
-                    const id =
-                        this.getAttribute(
-                            "href"
-                        );
-
-
-                    if (
-                        !id ||
-                        id === "#"
-                    ) {
-                        return;
-                    }
-
-
-                    const target =
-                        document.querySelector(
-                            id
-                        );
-
-
-                    if (!target) {
-                        return;
-                    }
-
-
-                    event.preventDefault();
-
-
-                    target.scrollIntoView({
-                        behavior: "smooth",
-                        block: "start"
-                    });
-
-                }
-            );
-
-        }
-    );
-
-}
-
-
-/* =========================================
-   HEADER SCROLL
-========================================= */
+/* =====================================
+   HEADER SCROLL EFFECT
+===================================== */
 
 function initHeader() {
 
     const header =
-        document.getElementById(
-            "header"
-        );
+        document.getElementById("header");
 
 
     if (!header) {
@@ -191,19 +89,13 @@ function initHeader() {
 
     function updateHeader() {
 
-        if (
-            window.scrollY > 40
-        ) {
+        if (window.scrollY > 40) {
 
-            header.classList.add(
-                "scrolled"
-            );
+            header.classList.add("scrolled");
 
         } else {
 
-            header.classList.remove(
-                "scrolled"
-            );
+            header.classList.remove("scrolled");
 
         }
 
@@ -212,7 +104,8 @@ function initHeader() {
 
     window.addEventListener(
         "scroll",
-        updateHeader
+        updateHeader,
+        { passive: true }
     );
 
 
@@ -221,16 +114,14 @@ function initHeader() {
 }
 
 
-/* =========================================
-   YEAR
-========================================= */
+/* =====================================
+   CURRENT YEAR
+===================================== */
 
 function initYear() {
 
     const year =
-        document.getElementById(
-            "year"
-        );
+        document.getElementById("year");
 
 
     if (!year) {
@@ -244,16 +135,14 @@ function initYear() {
 }
 
 
-/* =========================================
+/* =====================================
    BACK TO TOP
-========================================= */
+===================================== */
 
 function initBackToTop() {
 
     const button =
-        document.getElementById(
-            "backToTop"
-        );
+        document.getElementById("backToTop");
 
 
     if (!button) {
@@ -261,27 +150,25 @@ function initBackToTop() {
     }
 
 
-    window.addEventListener(
-        "scroll",
-        function () {
+    function updateButton() {
 
-            if (
-                window.scrollY > 400
-            ) {
+        if (window.scrollY > 400) {
 
-                button.classList.add(
-                    "visible"
-                );
+            button.classList.add("visible");
 
-            } else {
+        } else {
 
-                button.classList.remove(
-                    "visible"
-                );
-
-            }
+            button.classList.remove("visible");
 
         }
+
+    }
+
+
+    window.addEventListener(
+        "scroll",
+        updateButton,
+        { passive: true }
     );
 
 
@@ -290,275 +177,49 @@ function initBackToTop() {
         function () {
 
             window.scrollTo({
-
                 top: 0,
-
                 behavior: "smooth"
-
             });
 
         }
     );
 
-}
 
-
-/* =========================================
-   CONTACT FORM
-========================================= */
-
-function initContactForm() {
-
-    const form =
-        document.getElementById(
-            "contactForm"
-        );
-
-
-    if (!form) {
-        return;
-    }
-
-
-    form.addEventListener(
-        "submit",
-        function (event) {
-
-            event.preventDefault();
-
-
-            const name =
-                document.getElementById(
-                    "name"
-                );
-
-
-            const email =
-                document.getElementById(
-                    "email"
-                );
-
-
-            const message =
-                document.getElementById(
-                    "message"
-                );
-
-
-            const formMessage =
-                document.getElementById(
-                    "formMessage"
-                );
-
-
-            const button =
-                form.querySelector(
-                    'button[type="submit"]'
-                );
-
-
-            const nameValue =
-                name.value.trim();
-
-
-            const emailValue =
-                email.value.trim();
-
-
-            const messageValue =
-                message.value.trim();
-
-
-            /* VALIDASI NAMA */
-
-            if (
-                nameValue.length < 3
-            ) {
-
-                showMessage(
-                    formMessage,
-                    "Sila masukkan nama yang sah.",
-                    "error"
-                );
-
-                name.focus();
-
-                return;
-            }
-
-
-            /* VALIDASI EMAIL */
-
-            if (
-                !isValidEmail(
-                    emailValue
-                )
-            ) {
-
-                showMessage(
-                    formMessage,
-                    "Sila masukkan e-mel yang sah.",
-                    "error"
-                );
-
-                email.focus();
-
-                return;
-            }
-
-
-            /* VALIDASI MESEJ */
-
-            if (
-                messageValue.length < 10
-            ) {
-
-                showMessage(
-                    formMessage,
-                    "Sila tulis mesej sekurang-kurangnya 10 aksara.",
-                    "error"
-                );
-
-                message.focus();
-
-                return;
-            }
-
-
-            /* LOADING */
-
-            if (button) {
-
-                button.disabled = true;
-
-                button.textContent =
-                    "Menghantar...";
-
-            }
-
-
-            /* DEMO */
-
-            setTimeout(
-                function () {
-
-                    showMessage(
-                        formMessage,
-                        "Terima kasih " +
-                        nameValue +
-                        ". Pertanyaan anda telah diterima. Ini masih borang demo.",
-                        "success"
-                    );
-
-
-                    form.reset();
-
-
-                    if (button) {
-
-                        button.disabled =
-                            false;
-
-                        button.textContent =
-                            "Hantar Pertanyaan";
-
-                    }
-
-                },
-                1200
-            );
-
-        }
-    );
+    updateButton();
 
 }
 
 
-/* =========================================
-   EMAIL VALIDATION
-========================================= */
+/* =====================================
+   SCROLL ANIMATION
+===================================== */
 
-function isValidEmail(
-    email
-) {
-
-    const pattern =
-        /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-
-    return pattern.test(
-        email
-    );
-
-}
-
-
-/* =========================================
-   FORM MESSAGE
-========================================= */
-
-function showMessage(
-    element,
-    message,
-    type
-) {
-
-    if (!element) {
-        return;
-    }
-
-
-    element.textContent =
-        message;
-
-
-    element.classList.remove(
-        "success",
-        "error"
-    );
-
-
-    element.classList.add(
-        type
-    );
-
-
-    setTimeout(
-        function () {
-
-            element.classList.remove(
-                type
-            );
-
-        },
-        6000
-    );
-
-}
-
-
-/* =========================================
-   CARD ANIMATION
-========================================= */
-
-function initCardsAnimation() {
+function initScrollAnimation() {
 
     const elements =
         document.querySelectorAll(
-            ".card, .step, .requirement, .hero-card"
+            ".card, .step, .requirement, .hero-card, .contact-item"
         );
 
 
-    if (
-        !elements.length
-    ) {
+    if (!elements.length) {
         return;
     }
 
 
-    if (
-        !("IntersectionObserver" in window)
-    ) {
+    /*
+        Jika browser tidak mendukung
+        IntersectionObserver, tampilkan
+        semua elemen seperti biasa.
+    */
+
+    if (!("IntersectionObserver" in window)) {
+
+        elements.forEach(function (element) {
+
+            element.classList.add("show");
+
+        });
 
         return;
     }
@@ -568,7 +229,7 @@ function initCardsAnimation() {
         new IntersectionObserver(
             function (
                 entries,
-                observerInstance
+                observerObject
             ) {
 
                 entries.forEach(
@@ -578,14 +239,12 @@ function initCardsAnimation() {
                             entry.isIntersecting
                         ) {
 
-                            entry.target.style.opacity =
-                                "1";
-
-                            entry.target.style.transform =
-                                "translateY(0)";
+                            entry.target.classList.add(
+                                "show"
+                            );
 
 
-                            observerInstance.unobserve(
+                            observerObject.unobserve(
                                 entry.target
                             );
 
@@ -604,14 +263,9 @@ function initCardsAnimation() {
     elements.forEach(
         function (element) {
 
-            element.style.opacity =
-                "0";
-
-            element.style.transform =
-                "translateY(25px)";
-
-            element.style.transition =
-                "opacity .6s ease, transform .6s ease";
+            element.classList.add(
+                "animate"
+            );
 
 
             observer.observe(
@@ -624,17 +278,119 @@ function initCardsAnimation() {
 }
 
 
-/* =========================================
-   ESCAPE = CLOSE MOBILE MENU
-========================================= */
+/* =====================================
+   SMOOTH SCROLL
+===================================== */
+
+function initSmoothScroll() {
+
+    const links =
+        document.querySelectorAll(
+            'a[href^="#"]'
+        );
+
+
+    links.forEach(function (link) {
+
+        link.addEventListener(
+            "click",
+            function (event) {
+
+                const targetId =
+                    this.getAttribute("href");
+
+
+                if (
+                    !targetId ||
+                    targetId === "#"
+                ) {
+                    return;
+                }
+
+
+                const target =
+                    document.querySelector(
+                        targetId
+                    );
+
+
+                if (!target) {
+                    return;
+                }
+
+
+                event.preventDefault();
+
+
+                const header =
+                    document.getElementById(
+                        "header"
+                    );
+
+
+                const headerHeight =
+                    header
+                        ? header.offsetHeight
+                        : 0;
+
+
+                const targetPosition =
+                    target.getBoundingClientRect().top
+                    +
+                    window.scrollY
+                    -
+                    headerHeight;
+
+
+                window.scrollTo({
+
+                    top: targetPosition,
+
+                    behavior: "smooth"
+
+                });
+
+            }
+        );
+
+    });
+
+}
+
+
+/* =====================================
+   EXTERNAL LINKS
+===================================== */
+
+function initExternalLinks() {
+
+    const externalLinks =
+        document.querySelectorAll(
+            'a[target="_blank"]'
+        );
+
+
+    externalLinks.forEach(function (link) {
+
+        link.setAttribute(
+            "rel",
+            "noopener noreferrer"
+        );
+
+    });
+
+}
+
+
+/* =====================================
+   ESCAPE KEY
+===================================== */
 
 document.addEventListener(
     "keydown",
     function (event) {
 
-        if (
-            event.key !== "Escape"
-        ) {
+        if (event.key !== "Escape") {
             return;
         }
 
@@ -645,7 +401,7 @@ document.addEventListener(
             );
 
 
-        const button =
+        const menuButton =
             document.getElementById(
                 "menuButton"
             );
@@ -660,12 +416,86 @@ document.addEventListener(
         }
 
 
-        if (button) {
+        if (menuButton) {
 
-            button.setAttribute(
+            menuButton.setAttribute(
                 "aria-expanded",
                 "false"
             );
+
+        }
+
+    }
+);
+
+
+/* =====================================
+   WINDOW RESIZE
+===================================== */
+
+window.addEventListener(
+    "resize",
+    function () {
+
+        const navigation =
+            document.getElementById(
+                "navigation"
+            );
+
+        const menuButton =
+            document.getElementById(
+                "menuButton"
+            );
+
+
+        /*
+            Jika layar kembali besar,
+            tutup menu mobile.
+        */
+
+        if (
+            window.innerWidth > 720 &&
+            navigation
+        ) {
+
+            navigation.classList.remove(
+                "open"
+            );
+
+        }
+
+
+        if (
+            window.innerWidth > 720 &&
+            menuButton
+        ) {
+
+            menuButton.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+        }
+
+    }
+);
+
+
+/* =====================================
+   PREVENT DOUBLE CLICK
+===================================== */
+
+document.addEventListener(
+    "dblclick",
+    function (event) {
+
+        if (
+            event.target.closest(
+                ".btn, .register-btn"
+            )
+        ) {
+
+            event.preventDefault();
 
         }
 
